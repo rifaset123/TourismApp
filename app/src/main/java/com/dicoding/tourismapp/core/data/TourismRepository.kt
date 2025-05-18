@@ -40,6 +40,7 @@ class TourismRepository private constructor(
                 }
             }
 
+            // fetch data dari repo sekali, bisa di set true buat berkali kali
             override fun shouldFetch(data: List<Tourism>?): Boolean =
                 data.isNullOrEmpty()
 

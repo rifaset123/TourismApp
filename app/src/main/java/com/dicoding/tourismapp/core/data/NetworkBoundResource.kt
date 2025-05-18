@@ -8,6 +8,7 @@ import com.dicoding.tourismapp.core.utils.AppExecutors
 
 abstract class NetworkBoundResource<ResultType, RequestType>(private val mExecutors: AppExecutors) {
 
+    // KEGUNAAN : aplikasi hanya mengakses data dari remote API sekali saja di awal
     private val result = MediatorLiveData<Resource<ResultType>>()
 
     init {
