@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface ApiService {
     @GET("list") // endpoint
-    fun getList(): Call<ListTourismResponse>
+    suspend fun getList(): ListTourismResponse // suspend supaya bisa dipanggil di coroutine
 }
