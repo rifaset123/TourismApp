@@ -7,5 +7,5 @@ import retrofit2.http.GET
 
 interface ApiService {
     @GET("list") // endpoint
-    fun getList(): Flowable<ListTourismResponse>
+    suspend fun getList(): ListTourismResponse // flow
 }
