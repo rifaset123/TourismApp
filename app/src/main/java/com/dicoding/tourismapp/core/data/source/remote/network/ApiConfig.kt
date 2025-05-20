@@ -3,6 +3,7 @@ package com.dicoding.tourismapp.core.data.source.remote.network
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -21,6 +22,7 @@ object ApiConfig {
             // API should be hidden, this is public API for learning purpose
             .baseUrl("https://tourism-api.dicoding.dev/")
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create()) // mengganti remote data source supaya bisa menghasilkan Flowable
             .client(provideOkHttpClient()) // add logging interceptor (type "okhttp" to see logcat)
             .build()
         return retrofit.create(ApiService::class.java)
