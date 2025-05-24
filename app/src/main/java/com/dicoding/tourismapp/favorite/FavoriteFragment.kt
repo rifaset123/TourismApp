@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.tourismapp.core.ui.TourismAdapter
 import com.dicoding.tourismapp.databinding.FragmentFavoriteBinding
 import com.dicoding.tourismapp.detail.DetailTourismActivity
+import com.example.core.domain.model.Tourism
+import com.example.core.ui.TourismAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -42,7 +43,7 @@ class FavoriteFragment : Fragment() {
 //            val factory = ViewModelFactory.getInstance(requireActivity())
 //            favoriteViewModel = ViewModelProvider(this, factory)[FavoriteViewModel::class.java]
 
-            favoriteViewModel.favoriteTourism.observe(viewLifecycleOwner) { dataTourism ->
+            favoriteViewModel.favoriteTourism.observe(viewLifecycleOwner) { dataTourism: List<Tourism>  ->
                 tourismAdapter.submitList(dataTourism)
                 binding.viewEmpty.root.visibility =
                     if (dataTourism.isNotEmpty()) View.GONE else View.VISIBLE

@@ -10,10 +10,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.tourismapp.R
-import com.dicoding.tourismapp.core.data.Resource
-import com.dicoding.tourismapp.core.ui.TourismAdapter
+import com.example.core.data.Resource
 import com.dicoding.tourismapp.databinding.FragmentHomeBinding
 import com.dicoding.tourismapp.detail.DetailTourismActivity
+import com.example.core.domain.model.Tourism
+import com.example.core.ui.TourismAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -46,15 +47,15 @@ class HomeFragment : Fragment() {
 //            val factory = ViewModelFactory.getInstance(requireActivity())
 //            homeViewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
 
-            homeViewModel.tourism.observe(viewLifecycleOwner) { tourism ->
+            homeViewModel.tourism.observe(viewLifecycleOwner) { tourism: Resource<List<Tourism>> ->
                 if (tourism != null) {
                     when (tourism) {
-                        is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
-                        is Resource.Success -> {
+                        is Resource.Loading<*> -> binding.progressBar.visibility = View.VISIBLE
+                        is Resource.Success<*> -> {
                             binding.progressBar.visibility = View.GONE
                             tourismAdapter.submitList(tourism.data)
                         }
-                        is Resource.Error -> {
+                        is Resource.Error<*> -> {
                             binding.progressBar.visibility = View.GONE
                             binding.viewError.root.visibility = View.VISIBLE
                             binding.viewError.tvError.text =
