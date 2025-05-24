@@ -1,18 +1,16 @@
 package com.dicoding.tourismapp
 
 import android.app.Application
-import com.dicoding.tourismapp.core.di.CoreComponent
-import com.dicoding.tourismapp.core.di.DaggerCoreComponent
-import com.dicoding.tourismapp.di.AppComponent
-import com.dicoding.tourismapp.di.DaggerAppComponent
+import dagger.hilt.android.HiltAndroidApp
 
+@HiltAndroidApp
 open class MyApplication : Application() {
-    // base class supaya kita bisa mengimplementasikan Dagger di semua Activity yang extend ke Application
-    private val coreComponent: CoreComponent by lazy {
-        DaggerCoreComponent.factory().create(applicationContext)
-    }
-
-    val appComponent: AppComponent by lazy {
-        DaggerAppComponent.factory().create(coreComponent)
-    }
+//    // base class supaya kita bisa mengimplementasikan Dagger di semua Activity yang extend ke Application
+//    private val coreComponent: CoreComponent by lazy {
+//        DaggerCoreComponent.factory().create(applicationContext)
+//    }
+//
+//    val appComponent: AppComponent by lazy {
+//        DaggerAppComponent.factory().create(coreComponent)
+//    }
 }
