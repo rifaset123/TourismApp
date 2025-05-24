@@ -9,6 +9,10 @@ android {
     namespace = "com.dicoding.tourismapp"
     compileSdk = 34
 
+    packagingOptions{
+        resources.excludes.add("/META-INF/*")
+    }
+
     defaultConfig {
         applicationId = "com.dicoding.tourismapp"
         minSdk = 24
@@ -47,6 +51,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.firebase.appdistribution.gradle)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -67,4 +72,7 @@ dependencies {
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
+
+    implementation(libs.dagger)
+    ksp(libs.dagger.compiler)
 }
