@@ -13,14 +13,20 @@ import com.example.core.data.source.remote.RemoteDataSource
 import com.example.core.data.source.remote.network.ApiService
 import com.example.core.domain.repository.ITourismRepository
 import com.example.core.utils.AppExecutors
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 
 val databaseModule = module {
     factory { get<TourismDatabase>().tourismDao() }
-    single {
+    single { // initiate database
+        val passphrase: ByteArray = SQLiteDatabase.getBytes("dicoding".toCharArray()) // encrypt
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
             TourismDatabase::class.java, "Tourism.db"
-        ).fallbackToDestructiveMigration().build()
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 

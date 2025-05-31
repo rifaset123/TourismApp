@@ -27,6 +27,10 @@ lifecycle = "2.8.4"
 koin = "3.5.6"
 activity = "1.10.1"
 
+# v5 encryption
+androidDatabaseSqlcipher = "4.5.4"
+sqliteKtx = "2.4.0"
+
 [libraries]
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
@@ -57,6 +61,10 @@ androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-lived
 # v3 koin di
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+
+# v5 encryption
+android-database-sqlcipher = { module = "net.zetetic:android-database-sqlcipher", version.ref = "androidDatabaseSqlcipher" }
+androidx-sqlite-ktx = { module = "androidx.sqlite:sqlite-ktx", version.ref = "sqliteKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
