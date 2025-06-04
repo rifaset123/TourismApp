@@ -75,6 +75,7 @@ dependencies {
 
     implementation(libs.koin.android)
     implementation(libs.lottie)
+    implementation(libs.shimmer)
 
     implementation(project(":core"))
 }
